@@ -46,6 +46,7 @@ public class NotesProvider extends ContentProvider { //use to quaerys
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+
         return null;
     }
 

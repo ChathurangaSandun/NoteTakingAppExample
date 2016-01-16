@@ -20,6 +20,10 @@ public class DBOpenHelper extends SQLiteOpenHelper { //Data Layer
     public static final String NOTE_TEXT = "noteText";
     public static final String NOTE_CREATED = "noteCreated";
 
+
+    public static final String [] ALL_COLUMNS = {NOTE_ID,NOTE_TEXT,NOTE_CREATED};
+
+
     //SQL to create table
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_NOTES + " (" +
@@ -38,13 +42,11 @@ public class DBOpenHelper extends SQLiteOpenHelper { //Data Layer
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NOTES);
         onCreate(db);
-
     }
 }
