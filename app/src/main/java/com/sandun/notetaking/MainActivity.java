@@ -1,5 +1,7 @@
 package com.sandun.notetaking;
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        System.out.println("_____________________________________ ");
 
+
+        insertNote("New Note");
 
 
 
@@ -32,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    private void insertNote(String note) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.NOTE_TEXT, note);
+        Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI,
+                values);
+        System.out.println("dfsfasfsadfsadfsadf Inserted note " + noteUri.getLastPathSegment());
     }
 
     @Override
